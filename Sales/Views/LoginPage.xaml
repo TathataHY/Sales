@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:Sales.Helpers"
+             x:Class="Sales.Views.LoginPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="{i18n:Translate Login}">
+    <ContentPage.Content>
+        <ScrollView BindingContext="{Binding Login}">
+            <StackLayout Padding="5">
+                <Image Source="sales"
+                       HeightRequest="150" />
+                <Grid Margin="10,0"
+                      VerticalOptions="CenterAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Text="{i18n:Translate Email}"
+                           Grid.Column="0"
+                           Grid.Row="0"
+                           VerticalOptions="Center" />
+                    <Entry Placeholder="{i18n:Translate EmailPlaceholder}"
+                           Text="{Binding Email}"
+                           Grid.Column="1"
+                           Grid.Row="0"
+                           Keyboard="Email" />
+                    <Label Text="{i18n:Translate Password}"
+                           Grid.Column="0"
+                           Grid.Row="1"
+                           VerticalOptions="Center" />
+                    <Entry Placeholder="{i18n:Translate PasswordPlaceholder}"
+                           Text="{Binding Password}"
+                           Grid.Column="1"
+                           Grid.Row="1"
+                           IsPassword="True" />
+                </Grid>
+                <StackLayout Orientation="Horizontal"
+                             Margin="10,0"
+                             VerticalOptions="CenterAndExpand">
+                    <Label Text="{i18n:Translate RememberMe}"
+                           HorizontalOptions="StartAndExpand"
+                           VerticalOptions="Center" />
+                    <Switch IsToggled="{Binding IsRemembered}"
+                            HorizontalOptions="End" />
+                </StackLayout>
+                <Label Text="{i18n:Translate Forgot}"
+                       TextColor="Blue"
+                       HorizontalOptions="Center"
+                       VerticalOptions="CenterAndExpand">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <ActivityIndicator IsRunning="{Binding IsRunning}"
+                                   VerticalOptions="CenterAndExpand" />
+                <StackLayout Orientation="Horizontal"
+                             Margin="40,0"
+                             VerticalOptions="CenterAndExpand">
+                    <Button Text="{i18n:Translate Login}"
+                            IsEnabled="{Binding IsEnabled}"
+                            Command="{Binding LoginCommand}"
+                            CornerRadius="23"
+                            HeightRequest="46"
+                            TextColor="White"
+                            BackgroundColor="Navy"
+                            HorizontalOptions="FillAndExpand" />
+                    <Button Text="{i18n:Translate Register}"
+                            IsEnabled="{Binding IsEnabled}"
+                            Command="{Binding RegisterCommand}"
+                            CornerRadius="23"
+                            HeightRequest="46"
+                            TextColor="White"
+                            BackgroundColor="Purple"
+                            HorizontalOptions="FillAndExpand" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal"
+                             HorizontalOptions="Center"
+                             VerticalOptions="EndAndExpand">
+                    <ImageButton Command="{Binding LoginFacebookCommand}"
+                                 Source="facebook_logo"
+                                 Aspect="AspectFit"
+                                 HeightRequest="70"
+                                 WidthRequest="70" />
+                    <ImageButton Command="{Binding LoginTwitterCommand}"
+                                 Source="twitter_logo"
+                                 Aspect="AspectFit"
+                                 HeightRequest="70"
+                                 WidthRequest="70" />
+                    <ImageButton Command="{Binding LoginInstagramCommand}"
+                                 Source="instagram_logo"
+                                 Aspect="AspectFit"
+                                 HeightRequest="70"
+                                 WidthRequest="70" />
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
